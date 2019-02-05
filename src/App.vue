@@ -2,30 +2,49 @@
   <div id="app">
     <nav>
       <ul>
-        <li>About</li>
-        <li>Work</li>
+        <li v-for="name in navItems" :key="name">
+          <router-link :to="{ name }">{{name}}</router-link>
+        </li>
       </ul>
     </nav>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+<script lang="ts">
+  import { Component, Prop, Vue } from 'vue-property-decorator'
+
+  @Component
+  export default class App extends Vue {
+    navItems: string[] = [
+      'Home',
+      'About',
+      'Work',
+      'Contact',
+    ]
   }
-  #nav {
-    padding: 30px;
-    a {
-      font-weight: bold;
-      color: #2c3e50;
-      &.router-link-exact-active {
-        color: #42b983;
-      }
-    }
-  }
+</script>
+
+<style lang="sass" scoped>
+  @import "~@/styles/custom-utilities"
+
+  nav
+    @apply fixed pin-t pin-x z-40
+    @apply text-right text-grey-lighter text-xl
+
+    &.solid
+      @apply bg-grey-darker
+
+    ul
+      @apply list-reset
+
+      li
+        @apply inline-block
+        @apply font-heading uppercase
+
+        a
+          @apply inline-block py-2 px-4
+
+          &.router-link-exact-active
+            border-bottom: 2px solid orange
 </style>

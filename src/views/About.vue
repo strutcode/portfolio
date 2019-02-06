@@ -5,8 +5,10 @@
 
       <section class="core-values">
         <article v-for="item in coreValues" :key="item.title">
-          <div class="hexagon"></div>
-          <h1>{{ item.title }}</h1>
+          <Hexagon color="#4dc0b5" vertical>
+            <div class="transform-center">Hello World</div>
+          </Hexagon>
+          <h2>{{ item.title }}</h2>
           <p>{{ item.text }}</p>
         </article>
       </section>
@@ -14,18 +16,28 @@
   </div>
 </template>
 
-<script>
-  const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator'
+  import Hexagon from '@/components/Hexagon.vue'
 
-  export default {
-    data: () => ({
-      coreValues: [
+  const lorem:string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+
+  interface CoreValue {
+    title: string,
+    text: string,
+  }
+
+  @Component({
+    components: { Hexagon },
+  })
+  export default class About extends Vue {
+    coreValues:CoreValue[] = [
         {
-          title: 'Robust',
+          title: 'Fast',
           text: lorem,
         },
         {
-          title: 'Responsive',
+          title: 'Robust',
           text: lorem,
         },
         {
@@ -33,11 +45,10 @@
           text: lorem,
         },
         {
-          title: 'Consistent',
+          title: 'Responsive',
           text: lorem,
         },
-      ],
-    }),
+      ]
   }
 </script>
 
@@ -47,19 +58,6 @@
   .core-values
     @apply flex content-between text-center
 
-  .hexagon
-    @apply block relative bg-teal mx-auto
-    height: 140px
-    width: 140px * $hex
-
-    &:before, &:after
-      content: ''
-      @apply absolute pin bg-teal
-      transform-origin: center
-
-    &:before
-      transform: rotate(60deg)
-
-    &:after
-      transform: rotate(-60deg)
+    p
+      @apply text-grey-dark
 </style>

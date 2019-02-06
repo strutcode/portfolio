@@ -6,7 +6,7 @@ html, body
   @apply antialiased font-body text-grey-darkest
 
 #app, .page
-  @apply fixed pin
+  @apply fixed pin overflow-auto
 
 .page-title
   @apply w-1/2 border-b-4 border-grey-darker text-center mx-auto my-12
@@ -20,3 +20,9 @@ h1, h2, h3, h4
 
 a
   @apply no-underline
+
+input, textarea
+  @apply bg-grey-lighter rounded py-2 px-4 w-full
+
+  &:focus
+    @apply bg-grey-lightest

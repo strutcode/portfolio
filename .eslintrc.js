@@ -12,10 +12,12 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     semi: ['error', 'never'],
-    'import/no-extraneous-dependencies': [
-      'off',
-      { devDependencies: ['**/*.config.js', '**/*.spec.[jt]s'] },
-    ],
+    // Personal style
+    'no-plusplus': 'off',
+    'no-param-reassign': 'off',
+    // Typescript class style
+    'no-new': 'off',
+    'class-methods-use-this': 'off',
   },
   overrides: [
     {

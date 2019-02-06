@@ -24,8 +24,6 @@
 </script>
 
 <style lang="sass" scoped>
-  @import "~@/styles/custom-utilities"
-
   .hero
     @apply absolute pin-l
     bottom: 60%

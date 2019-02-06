@@ -1,13 +1,15 @@
 @tailwind preflight
 @tailwind components
 @tailwind utilities
-@import "./custom-utilities"
 
 html, body
   @apply antialiased font-body text-grey-darkest
 
 #app, .page
   @apply fixed pin
+
+.page-title
+  @apply w-1/2 border-b-4 border-grey-darker text-center mx-auto my-12
 
 h1, h2, h3, h4
   @apply font-heading text-grey-darkest

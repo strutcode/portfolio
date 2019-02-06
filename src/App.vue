@@ -26,8 +26,6 @@
 </script>
 
 <style lang="sass" scoped>
-  @import "~@/styles/custom-utilities"
-
   nav
     @apply fixed pin-t pin-x z-40
     @apply text-right text-grey-lighter text-xl
@@ -46,5 +44,5 @@
           @apply inline-block py-2 px-4
 
           &.router-link-exact-active
-            border-bottom: 2px solid orange
+            @apply border-orange border-b-2
 </style>

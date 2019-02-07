@@ -1,8 +1,6 @@
 <template>
   <div class="work page">
     <div class="container content">
-      <h1 class="page-title">MY WORK</h1>
-
       <div class="work-grid">
         <div v-for="i in 9" :key="i">
           <div class="item" />
@@ -13,6 +11,9 @@
 </template>
 
 <style lang="sass" scoped>
+  .content
+    padding-top: 10%
+
   .work-grid
     @apply flex flex-wrap
 
@@ -29,9 +30,9 @@
 
   @screen md
     .work-grid > div
-        @apply w-1/2
+      @apply w-1/2
 
   @screen lg
     .work-grid > div
-        @apply w-1/3
+      @apply w-1/3
 </style>

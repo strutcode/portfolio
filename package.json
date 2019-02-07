@@ -10,6 +10,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@mdi/font": "^3.4.93",
+    "@mdi/js": "^3.4.93",
+    "@mdi/svg": "^3.4.93",
     "babylonjs": "^3.3.0",
     "pex-math": "github:pex-gl/pex-math",
     "terser": "^3.14.1",
@@ -37,6 +40,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.0",
     "node-sass": "^4.9.0",
+    "raw-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
     "tailwindcss": "^0.7.4",
     "typescript": "^3.2.4",

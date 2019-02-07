@@ -27,7 +27,7 @@
 
 <style lang="sass" scoped>
   nav
-    @apply fixed pin-t pin-x z-40
+    @apply fixed pin-t pin-x z-40 bg-white
     @apply text-right text-grey-lighter text-xl
 
     &.solid

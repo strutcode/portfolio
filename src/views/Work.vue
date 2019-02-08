@@ -3,7 +3,7 @@
     <div class="container content">
       <div class="work-grid">
         <div v-for="i in 9" :key="i">
-          <div class="item" />
+          <a href="#" class="item" />
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
       @apply w-full p-4
 
       .item
-        @apply bg-grey-light
+        @apply block bg-grey-light
 
         &:before
           content: ''

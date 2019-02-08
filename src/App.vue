@@ -7,7 +7,9 @@
         </li>
       </ul>
     </nav>
-    <router-view/>
+    <transition name="slide" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -27,7 +29,7 @@
 
 <style lang="sass" scoped>
   nav
-    @apply fixed pin-t pin-x z-40 bg-white
+    @apply fixed pin-t pin-x z-40 bg-white pr-4
     @apply text-right text-grey-lighter text-xl
 
     &.solid
@@ -45,4 +47,13 @@
 
           &.router-link-exact-active
             @apply border-orange border-b-2
+
+  .slide-enter-active
+    transition: all 130ms ease-in
+
+  .slide-leave-active
+    transition: all 130ms ease-in
+
+  .slide-enter, .slide-leave-to
+    opacity: 0
 </style>

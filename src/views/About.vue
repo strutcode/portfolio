@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about page">
     <div class="container content">
       <h1 class="page-title">CORE TENETS</h1>
 
@@ -28,7 +28,7 @@
       <div class="columns">
         <section class="personal">
           <img />
-          <b>About me</b>
+          <h3>About me</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Praesent tincidunt tempus dui eu posuere. Curabitur sed metus
@@ -55,13 +55,17 @@
         </section>
 
         <section class="confidences">
+          <h3 class="mb-4">Confidences</h3>
           <div class="row" v-for="(percent, item) in confidences" :key="item">
             <div class="title">{{ item }}</div>
             <div class="bar">
               <div class="filled" :style="{ width: percent + '%' }" />
-              <span>{{ percent }}%</span>
+              <span>{{ percent / 10 }}/10</span>
             </div>
           </div>
+          <button class="block w-full rounded bg-grey-light p-4 text-center">
+            See More
+          </button>
         </section>
       </div>
     </div>
@@ -71,7 +75,7 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import {
-    mdiSpeedometer, mdiWall, mdiImageFilterHdr, mdiBookOpenPageVariant,
+    mdiSpeedometer, mdiWall, mdiImageFilterHdr, mdiCodeTagsCheck,
   } from '@mdi/js'
   import Hexagon from '@/components/Hexagon.vue'
 
@@ -90,32 +94,32 @@
     coreValues:CoreValue[] = [
       {
         title: 'Speed',
-        text: lorem,
+        text: 'Fast load times and no hiccups. Responsiveness is paramount to user experience.',
         icon: mdiSpeedometer,
       },
       {
         title: 'Reliability',
-        text: lorem,
+        text: 'Automated testing and good practices ensure the fewest possible hangups.',
         icon: mdiWall,
       },
       {
         title: 'Aesthetic',
-        text: lorem,
+        text: 'Clean design and clean code makes easy reading for users and developers.',
         icon: mdiImageFilterHdr,
       },
       {
-        title: 'Readability',
-        text: lorem,
-        icon: mdiBookOpenPageVariant,
+        title: 'Compatability',
+        text: 'No browser left behind. Cross compatibility is not the user\'s concern.',
+        icon: mdiCodeTagsCheck,
       },
     ]
 
-    confidences = {
+    confidences: { [key: string]: number } = {
       Vue: 100,
       React: 80,
       ES5: 100,
       ES6: 90,
-      Typescript: 50,
+      Typescript: 60,
       HTML: 100,
       Pug: 70,
       CSS: 70,
@@ -123,9 +127,9 @@
       Less: 50,
       Node: 60,
       Ruby: 80,
-      Rails: 40,
       Design: 50,
       UX: 70,
+      'Ruby on Rails': 40,
     }
   }
 </script>
@@ -134,7 +138,10 @@
   $hex: 0.57735
 
   .core-values
-    @apply flex content-between text-center
+    @apply flex justify-between content-between text-center
+
+    article
+      @apply w-1/5
 
     .icon
       width: 36px

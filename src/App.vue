@@ -49,11 +49,17 @@
             @apply border-orange border-b-2
 
   .slide-enter-active
-    transition: all 130ms ease-in
+    transition: all 90ms ease-in
 
   .slide-leave-active
-    transition: all 130ms ease-in
+    transition: all 90ms ease-in
 
   .slide-enter, .slide-leave-to
     opacity: 0
+
+  .slide-enter
+    top: 25%
+
+  .slide-leave-to
+    top: -25%
 </style>

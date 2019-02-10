@@ -1,14 +1,12 @@
 <template>
   <div class="about page">
     <div class="container content">
-      <h1 class="page-title">CORE TENETS</h1>
+      <h1 class="tenets">CORE TENETS</h1>
 
       <section class="core-values">
         <article v-for="item in coreValues" :key="item.title">
-          <Hexagon color="#4dc0b5" vertical>
-            <Hexagon class="transform-center" :size="80" color="#4dc0b5" vertical fill>
-              <!-- <img class="transform-center icon" src="@mdi/svg/svg/speedometer.svg" /> -->
-              <!-- <div v-html="require('@mdi/svg/svg/speedometer.svg!raw-loader')" /> -->
+          <Hexagon color="#22A4B5" vertical>
+            <Hexagon class="transform-center" :size="80" :border="0" color="#22A4B5" vertical fill>
               <svg class="transform-center icon" viewBox="0 0 24 24">
                 <path :d="item.icon" fill="#fff" />
               </svg>
@@ -16,56 +14,49 @@
           </Hexagon>
           <h2>{{ item.title }}</h2>
           <p>{{ item.text }}</p>
-          <!-- <div class="tenet">
-            <div class="title">
-              <h2>{{ item.title }}</h2>
-            </div>
-            <p>{{ item.text }}</p>
-          </div> -->
         </article>
       </section>
 
       <div class="columns">
         <section class="personal">
-          <img />
+          <img src="@/assets/me.png" />
           <h3>About me</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Praesent tincidunt tempus dui eu posuere. Curabitur sed metus
-            vitae neque viverra iaculis ac vel nisi. Donec eu felis non ligula
-            euismod mollis. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Morbi vel enim semper, facilisis metus vel, mollis dui. Nam
-            aliquet tincidunt mi, et vulputate sapien maximus in. Vivamus ex
-            neque, finibus a condimentum id, scelerisque sed velit.
+            From a very young age I have been fascinated by computers, seeing
+            them as technological wonder and striving to understand all of their
+            inner workings. I began with HTML and CSS, later graduating to C,
+            C++, x86 Assembly and others. That pursuit continues even today as I
+            learn emerging technologies like serverless architecture and machine
+            learning.
           </p>
+
           <p>
-            Aliquam in risus et augue dapibus auctor eu at metus. Quisque sit
-            amet sodales nisl. Interdum et malesuada fames ac ante ipsum primis
-            in faucibus. Donec mattis eget erat id tempus. Aenean ut sodales
-            felis. Morbi mollis dolor felis, facilisis hendrerit tellus
-            faucibus ut. Vivamus hendrerit tristique dui ut ultricies. Nunc
-            pellentesque arcu vel magna lacinia dignissim. Integer a elit nec
-            ante molestie cursus ac sit amet massa. Integer mi nisi, mollis ac
-            placerat in, volutpat quis ex. Cras cursus aliquam ex at commodo.
-            Morbi a molestie ipsum. Morbi aliquet nisl ut semper ullamcorper.
-            Sed hendrerit efficitur metus, nec euismod elit mattis at. Nam non
-            sodales velit. Suspendisse commodo orci odio, id rutrum diam
-            imperdiet non.
+            Still the internet and the languages that power it hold the most
+            sway for me. The majority of my time is spent writing code in and
+            keeping up with trends in HTML, CSS, Javascript and all of their
+            many variants and supersets. I am intimately familiar with all of
+            the major frameworks and utilities in that space and continue to
+            explore new options as they appear, occassionally even contributing
+            to an up and coming tool.
+          </p>
+
+          <p>
+            I am an experienced freelancer and always open to new opportunities.
+            If my skills sound like a good fit for you then
+            <router-link :to="{ name: 'Contact' }">let's talk</router-link>!
           </p>
         </section>
 
         <section class="confidences">
           <h3 class="mb-4">Confidences</h3>
-          <div class="row" v-for="(percent, item) in confidences" :key="item">
+          <div class="row" v-for="[item, percent] in confidencesShort" :key="item">
             <div class="title">{{ item }}</div>
             <div class="bar">
               <div class="filled" :style="{ width: percent + '%' }" />
               <span>{{ percent / 10 }}/10</span>
             </div>
           </div>
-          <button class="block w-full rounded bg-grey-light p-4 text-center">
-            See More
-          </button>
+          <!-- <button class="see-more">See More</button> -->
         </section>
       </div>
     </div>
@@ -109,76 +100,66 @@
       },
       {
         title: 'Compatability',
-        text: 'No browser left behind. Cross compatibility is not the user\'s concern.',
+        text: 'It should just work, no matter what device or browser the user chooses.',
         icon: mdiCodeTagsCheck,
       },
     ]
 
-    confidences: { [key: string]: number } = {
-      Vue: 100,
-      React: 80,
-      ES5: 100,
-      ES6: 90,
-      Typescript: 60,
-      HTML: 100,
-      Pug: 70,
-      CSS: 70,
-      Sass: 80,
-      Less: 50,
-      Node: 60,
-      Ruby: 80,
-      Design: 50,
-      UX: 70,
-      'Ruby on Rails': 40,
+    confidences: [string, number][] = [
+      ['Webpack', 80],
+      ['Vue', 100],
+      ['React', 80],
+      ['ES5', 100],
+      ['ES6', 90],
+      ['Typescript', 60],
+      ['HTML', 100],
+      ['Pug', 70],
+      ['CSS', 70],
+      ['Sass', 80],
+      ['Less', 50],
+      ['Node', 60],
+      ['Ruby', 80],
+      ['Design', 50],
+      ['UX', 70],
+      ['Ruby on Rails', 40],
+    ]
+
+    get confidencesShort() {
+      return this.confidences.slice(0, 10)
     }
   }
 </script>
 
 <style lang="sass" scoped>
-  $hex: 0.57735
+  .tenets
+    @apply w-1/2 border-b-2 border-grey-darker text-center mx-auto mt-12
 
   .core-values
-    @apply flex justify-between content-between text-center
+    @apply text-center
 
     article
-      @apply w-1/5
+      @apply mt-12
 
     .icon
       width: 36px
       height: 36px
       fill: white
 
-    .tenet
-      @apply border-teal mx-8 p-4
-      border-width: 3px
-
-      .title
-        @apply relative border-teal bg-white p-2 my-4
-        border-width: 3px
-        width: 140%
-        left: 50%
-        transform: translateX(-50%)
-
-  .columns
-    @apply flex w-full mt-12
+  .personal, .confidences
+    @apply mt-12
 
   .personal
-    flex: 0 1 35%
-
     img
-      @apply rounded-full bg-grey-lighter float-right m-4
+      @apply rounded-full bg-grey-lighter float-right m-4 border-4 border-teal
       width: 150px
       height: 150px
 
   .confidences
-    @apply flex-grow ml-12
-
     .row
       @apply flex rounded overflow-hidden mb-2
 
       .title
-        @apply bg-teal py-2 font-heading text-center
-        color: rgba(255, 255, 255, 0.8)
+        @apply bg-teal py-2 font-heading text-center text-white
         flex: 0 0 8em
 
       .bar
@@ -186,8 +167,32 @@
 
         .filled
           @apply absolute h-full bg-teal
-          opacity: 0.4
+          @apply opacity-40
 
         span
           @apply transform-center
+
+    .see-more
+      @apply block w-full rounded bg-grey-light p-4
+      @apply text-center text-black font-semibold
+
+      &:hover
+        @apply opacity-90
+
+  @screen md
+    .core-values
+      @apply flex justify-between content-between
+
+      article
+        @apply w-1/5
+
+  @screen lg
+    .columns
+      @apply flex w-full
+
+    .personal
+      flex: 0 1 35%
+
+    .confidences
+      @apply flex-grow ml-12
 </style>

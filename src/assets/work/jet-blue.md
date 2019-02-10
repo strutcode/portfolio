@@ -1,6 +1,6 @@
 ## Jet Blue Careers
 
-Currently the 5th largest airline in the United States, JetBlue was looking to support its continued growth with a new informational directory for prospective employees. I was contracted to handle all technical aspects of this important project while the design was developed separately.
+Currently the 6th largest airline in the United States, JetBlue was looking to support its continued growth with a new informational directory for prospective employees. I was contracted to handle all technical aspects of this important project while the design was developed separately.
 
 The Result was an attractive and efficient information portal based on the Wordpress platform. This structure allowed JetBlue's human resources staff to easily maintain and update essential information with familiar and well established interfaces.
 

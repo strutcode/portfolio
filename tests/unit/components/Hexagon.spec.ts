@@ -34,8 +34,7 @@ describe('Components', () => {
       const computedStyle = component.computed.computedStyle.get.call({ size: 200 })
       expect(computedStyle).to.eql({ width: '200px', height: '200px' })
 
-      const wrapper = mount(Hexagon)
-      const style = wrapper.element.style
+      const { style } = mount(Hexagon).element
 
       expect(style.width).to.equal('140px')
       expect(style.height).to.equal('140px')

@@ -18,6 +18,7 @@ module.exports = {
     // Typescript class style
     'no-new': 'off',
     'class-methods-use-this': 'off',
+    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
   },
   overrides: [
     {

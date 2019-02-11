@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import VeeValidate from 'vee-validate'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -6,6 +8,8 @@ import store from './store'
 import '@/styles/global.sass'
 
 Vue.config.productionTip = false
+
+Vue.use(VeeValidate)
 
 new Vue({
   router,

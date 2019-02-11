@@ -1,6 +1,6 @@
 import {
   Engine, Scene, Color4, TargetCamera, Vector3, DirectionalLight,
-  Mesh, Color3, StandardMaterial, MeshBuilder, HemisphericLight,
+  Mesh, Color3, StandardMaterial, MeshBuilder, HemisphericLight, Space,
 } from 'babylonjs'
 
 export default class Cubes {
@@ -49,7 +49,7 @@ export default class Cubes {
     // mesh.edgesWidth = 2
     // mesh.edgesColor = new Color4(0.95, 0.95, 0.95, 1)
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 15; i++) {
       const cube = Mesh.CreateBox(`cube${i}`, 5, scene)
       const rand = () => Math.random() * 2 - 1
       cube.position = new Vector3(rand() * 20, rand() * 20, Math.random() * 50 + 5)
@@ -69,7 +69,9 @@ export default class Cubes {
 
     setInterval(() => {
       cubes.forEach((cube) => {
-        cube.rotation.y += 0.001
+        // cube.rotation.y += 0.001
+        cube.rotate(Vector3.Up(), 0.001, Space.LOCAL)
+        // cube.translate(Vector3.Up(), 0.01, Space.LOCAL)
       })
 
       // mesh.rotation.y += 0.001

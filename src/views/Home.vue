@@ -4,14 +4,14 @@
 
     <div class="container content">
       <div class="hero">
-        <h1>Expertise to turn ideas into elegant code.</h1>
+        <h1>Expertise to turn outstanding ideas into elegant code.</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          I use web technologies to help build stronger businesses and better
+          user experiences.
         </p>
       </div>
 
-      <button class="cta">
+      <button class="cta" @click="$router.push({ name: 'About' })">
         <h3>LEARN MORE</h3>
       </button>
     </div>
@@ -25,6 +25,10 @@
   @Component
   export default class Home extends Vue {
     mounted() {
+      this.initBackground()
+    }
+
+    initBackground() {
       const cubes: Cubes = Cubes.init()
 
       this.$el.replaceChild(
@@ -47,25 +51,28 @@
 
   video
     @apply fixed h-full
-    opacity: 0.1
+    @apply opacity-10
 
   .cta
     @apply transform-center px-12 py-6
 
+    h3
+      position: relative
+
     &:before, &:after
-      content: ''
-      @apply transform-center w-full h-full
+      @apply psuedo-block transform-center w-full h-full
       @apply border border-grey-darker
-      transition: all 120ms ease-out
+      transition: all 70ms ease-out
+      background: rgba(255, 255, 255, 0.5)
+      z-index: -1
 
     &:hover
       &:before, &:after
-        width: 100%
-        height: 100%
+        @apply w-full h-full
 
     &:before
-      width: 80%
+      @apply w-4/5
 
     &:after
-      height: 60%
+      @apply h-3/5
 </style>

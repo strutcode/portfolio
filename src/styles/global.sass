@@ -3,29 +3,31 @@
 @tailwind utilities
 
 html, body
-  @apply antialiased font-body text-grey-darkest
+  @apply antialiased font-body text-black
 
 #app, .page
   @apply fixed pin-t pin-l w-full h-full overflow-auto px-8
 
-.page-title
-  @apply w-1/2 border-b-2 border-grey-darker text-center mx-auto my-12
-
 h1, h2, h3, h4
-  @apply font-heading text-grey-darkest
-  font-weight: 700
+  @apply font-heading text-black font-bold
 
 .content
   @apply relative h-full mx-auto
 
 a
-  @apply no-underline
+  @apply text-black
+
+  &:hover
+    @apply text-teal
 
 p
   @apply text-grey-dark mt-4
 
 input, textarea
-  @apply bg-grey-lighter rounded py-2 px-4 w-full
+  @apply bg-grey-lighter rounded py-2 px-4 w-full shadow-inner
 
   &:focus
     @apply bg-grey-lightest
+
+.error
+  @apply text-red

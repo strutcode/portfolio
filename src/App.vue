@@ -6,6 +6,9 @@
           <router-link :to="{ name }">{{name}}</router-link>
         </li>
       </ul>
+      <svg class="menu" viewBox="0 0 24 24">
+        <path :d="menuIcon" fill="rgba(0, 0, 0, 0.8)" />
+      </svg>
     </nav>
     <transition name="slide" mode="out-in">
       <router-view />
@@ -15,9 +18,11 @@
 
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { mdiMenu } from '@mdi/js'
 
   @Component
   export default class App extends Vue {
+    menuIcon: string = mdiMenu
     navItems: string[] = [
       'Home',
       'About',
@@ -29,21 +34,29 @@
 
 <style lang="sass" scoped>
   nav
-    @apply fixed pin-t pin-x z-40 bg-white pr-4
+    @apply fixed pin-t pin-x z-40 bg-white pr-4 shadow
     @apply text-right text-grey-lighter text-xl
 
-    &.solid
-      @apply bg-grey-darker
+    .menu
+      @apply m-2
+      height: 24px
+
+    &:hover
+      ul
+        display: block
+
+      .menu
+        display: none
 
     ul
       @apply list-reset
+      display: none
 
       li
-        @apply inline-block
         @apply font-heading uppercase
 
         a
-          @apply inline-block py-2 px-4
+          @apply inline-block py-2 px-4 no-underline
 
           &.router-link-exact-active
             @apply border-orange border-b-2
@@ -55,11 +68,24 @@
     transition: all 90ms ease-in
 
   .slide-enter, .slide-leave-to
-    opacity: 0
+    @apply opacity-0
 
   .slide-enter
     top: 25%
 
   .slide-leave-to
     top: -25%
+
+  @screen md
+    nav
+      @apply shadow-none
+
+      ul
+        display: block
+
+      .menu
+        display: none
+
+      li
+        @apply inline-block
 </style>
